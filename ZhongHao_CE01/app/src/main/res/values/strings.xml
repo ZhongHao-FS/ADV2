@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ZhongHao_CE01</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="menuItem_add">add</string>
+    <string name="editText_title_hint">Title</string>
+    <string name="editText_description_hint">Description</string>
+    <string name="marker_image_description">Marker Image</string>
+    <string name="warning_empty">Please do not leave any field empty!</string>
+    <string name="menuItem_camera">Camera</string>
+    <string name="menuItem_save">Save</string>
+    <string name="putExtraLatLng_key">EXTRA_LATLNG</string>
+    <string name="fillerText_title">Title</string>
+    <string name="fillerText_description">Description</string>
+    <string name="menuItem_delete">Delete</string>
+    <string name="putExtraTitle_key">EXTRA_TITLE</string>
+    <string name="putExtraDescript_key">EXTRA_DESCRIPT</string>
+    <string name="putExtraFilePath_key">EXTRA_IMAGEPATH</string>
+</resources>

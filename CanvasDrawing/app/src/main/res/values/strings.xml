@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CanvasDrawing</string>
+    <string name="openingText">Hello World!</string>
+</resources>

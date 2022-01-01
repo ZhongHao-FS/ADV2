@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ZhongHao_CE02</string>
+    <string name="buttonDescript_play">Play</string>
+    <string name="buttonDescript_stop">Stop</string>
+    <string name="buttonDescript_pause">Pause</string>
+    <string name="buttonDescript_next">Next</string>
+</resources>
