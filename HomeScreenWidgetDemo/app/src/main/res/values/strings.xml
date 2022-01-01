@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HomeScreenWidgetDemo</string>
+    <string name="show_toast">Show Toast</string>
+    <string name="show_config">Show Config</string>
+    <string name="toast_preferences">Toast Preferences</string>
+    <string name="toasting_widget">Toasting Widget</string>
+    <string name="toasting_widget_title">Widget Text</string>
+    <string name="toasting_widget_summary">Text to show when toasting from the widget.</string>
+    <string name="save">Save</string>
+</resources>

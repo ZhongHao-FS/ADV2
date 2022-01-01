@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/toast_preferences" >
+
+        <EditTextPreference android:key="com.fullsail.android.PREF_TEXT"
+            android:defaultValue="@string/toasting_widget"
+            android:title="@string/toasting_widget_title"
+            android:summary="@string/toasting_widget_summary"
+            android:inputType="textCapWords"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:dialogIcon="@android:drawable/ic_menu_edit" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
