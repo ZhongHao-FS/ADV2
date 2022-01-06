@@ -36,6 +36,8 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
     private final int[] songArray = new int[] {R.raw.bensound_ukulele, R.raw.bensound_creativeminds,
             R.raw.bensound_anewbeginning};
     private int mCurrentSong;
+    private boolean mLoop = false;
+    private boolean mShuffle = false;
 
     public class AudioServiceBinder extends Binder {
         public AudioPlaybackService getService() {
@@ -106,6 +108,7 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
     }
 
     private Notification buildNotification() {
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
         builder.setSmallIcon(R.drawable.ic_notification);
         builder.setContentTitle("Music Playing");
@@ -114,7 +117,7 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
 
         Intent activityIntent = new Intent(this, MainActivity.class);
         PendingIntent activityPendingIntent = PendingIntent.getActivity(this, 0,
-                activityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                activityIntent, PendingIntent.FLAG_UPDATE_CURRENT + PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(activityPendingIntent);
 
         return builder.build();
@@ -156,6 +159,19 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
         freshPlay();
     }
 
+    public void previous() {
+        mPlayer.reset();
+        mState = STATE_IDLE;
+
+        if (mCurrentSong > 0) {
+            mCurrentSong -= 1;
+        } else if (mCurrentSong == 0) {
+            mCurrentSong = 2;
+        }
+
+        freshPlay();
+    }
+
     public void stop() {
         if (mState == STATE_STARTED || mState == STATE_PAUSED || mState == STATE_PLAYBACK_COMPLETED) {
             mPlayer.stop();
@@ -182,5 +198,13 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
             mPlayer.prepareAsync();
             mState = STATE_PREPARING;
         }
+    }
+    
+    public void loopSwitched() {
+        mLoop = !mLoop;
+    }
+
+    public void shuffleSwitched() {
+        mShuffle = !mShuffle;
     }
 }

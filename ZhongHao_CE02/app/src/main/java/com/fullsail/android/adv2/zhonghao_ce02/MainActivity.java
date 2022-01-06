@@ -72,6 +72,13 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     }
 
     @Override
+    public void previous() {
+        if (mBound) {
+            mService.previous();
+        }
+    }
+
+    @Override
     public void next() {
         if (mBound) {
             mService.next();

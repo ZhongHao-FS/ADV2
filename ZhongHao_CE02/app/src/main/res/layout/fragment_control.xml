@@ -1,40 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <ImageButton
-        android:id="@+id/button_play"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/buttonDescript_play"
-        android:src="@android:drawable/ic_media_play"
-        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+        android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/button_pause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/buttonDescript_pause"
-        android:src="@android:drawable/ic_media_pause"
-        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+        <ImageButton
+            android:id="@+id/button_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/buttonDescript_play"
+            android:src="@android:drawable/ic_media_play"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
-    <ImageButton
-        android:id="@+id/button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/buttonDescript_next"
-        android:src="@android:drawable/ic_media_next"
-        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+        <ImageButton
+            android:id="@+id/button_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/buttonDescript_pause"
+            android:src="@android:drawable/ic_media_pause"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
-    <ImageButton
-        android:id="@+id/button_stop"
+        <ImageButton
+            android:id="@+id/button_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/buttonDescript_previous"
+            android:src="@android:drawable/ic_media_previous"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/buttonDescript_next"
+            android:src="@android:drawable/ic_media_next"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/button_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/buttonDescript_stop"
+            android:src="@drawable/ic_stop"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_loop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/buttonDescript_stop"
-        android:src="@drawable/ic_stop"
-        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+        android:minHeight="48dp"
+        android:text="@string/switch1_text" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_shuffle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/switch2_text" />
 </LinearLayout>

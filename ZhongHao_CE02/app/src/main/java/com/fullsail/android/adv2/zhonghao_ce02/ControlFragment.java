@@ -22,6 +22,7 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
         void play();
         void pause();
         void next();
+        void previous();
         void stop();
     }
 
@@ -48,6 +49,8 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
             mListener.pause();
         } else if (view.getId() == R.id.button_next) {
             mListener.next();
+        } else if (view.getId() == R.id.button_previous) {
+            mListener.previous();
         } else if (view.getId() == R.id.button_stop) {
             mListener.stop();
         }
@@ -69,6 +72,7 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
             root.findViewById(R.id.button_play).setOnClickListener(this);
             root.findViewById(R.id.button_stop).setOnClickListener(this);
             root.findViewById(R.id.button_pause).setOnClickListener(this);
+            root.findViewById(R.id.button_previous).setOnClickListener(this);
             root.findViewById(R.id.button_next).setOnClickListener(this);
         }
     }

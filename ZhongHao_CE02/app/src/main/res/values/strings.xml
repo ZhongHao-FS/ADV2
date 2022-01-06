@@ -4,4 +4,7 @@
     <string name="buttonDescript_stop">Stop</string>
     <string name="buttonDescript_pause">Pause</string>
     <string name="buttonDescript_next">Next</string>
+    <string name="buttonDescript_previous">Previous</string>
+    <string name="switch1_text">Single song looping</string>
+    <string name="switch2_text">Shuffle</string>
 </resources>

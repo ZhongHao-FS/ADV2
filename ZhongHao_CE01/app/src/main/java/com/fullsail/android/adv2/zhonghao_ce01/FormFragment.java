@@ -98,20 +98,18 @@ public class FormFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.camera && getActivity() != null) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-                try {
-                    mImageFileReference = FileUtility.createImageFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Uri imageURI = FileProvider.getUriForFile(getActivity(),
-                        "com.fullsail.android.adv2.zhonghao_ce01", mImageFileReference);
-
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageURI);
-                intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-
-                ActivityCompat.startActivityForResult(getActivity(), intent, 0, null);
+            try {
+                mImageFileReference = FileUtility.createImageFile();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            Uri imageURI = FileProvider.getUriForFile(getActivity(),
+                    "com.fullsail.android.adv2.zhonghao_ce01", mImageFileReference);
+
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageURI);
+            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+            ActivityCompat.startActivityForResult(getActivity(), intent, 0, null);
         }
 
         if (item.getItemId() == R.id.save && validateInput()) {
