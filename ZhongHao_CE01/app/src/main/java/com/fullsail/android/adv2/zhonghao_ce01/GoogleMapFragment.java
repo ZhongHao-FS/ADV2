@@ -212,7 +212,7 @@ public class GoogleMapFragment extends SupportMapFragment implements OnMapReadyC
                 location = new LatLng(Objects.requireNonNull(exif.getLatLong())[0], exif.getLatLong()[1]);
                 title = exif.getAttribute(TAG_TITLE);
                 description = exif.getAttribute(TAG_DESCRIPT);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
