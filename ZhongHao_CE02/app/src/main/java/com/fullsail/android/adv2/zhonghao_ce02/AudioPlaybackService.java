@@ -35,6 +35,8 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
     private MediaPlayer mPlayer;
     private final int[] songArray = new int[] {R.raw.bensound_ukulele, R.raw.bensound_creativeminds,
             R.raw.bensound_anewbeginning};
+    private final String[] songNameArray = new String[] {"ukulele", "creative minds",
+            "a new beginning"};
     private int mCurrentSong;
     private boolean mLoop = false;
     private boolean mShuffle = false;
@@ -66,6 +68,19 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
     }
 
     @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent.getAction() != null) {
+            if (intent.getAction().equals("Next")) {
+                next();
+            } else if (intent.getAction().equals("Previous")) {
+                previous();
+            }
+        }
+
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
 
@@ -85,14 +100,9 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
         mState = STATE_PLAYBACK_COMPLETED;
+        next();
 
-        if (mCurrentSong < 2) {
-            mCurrentSong += 1;
-            mPlayer.reset();
-            mState = STATE_IDLE;
-            freshPlay();
-
-        } else if (mCurrentSong == 2) {
+        if (!mLoop && mCurrentSong == 0) {
             stop();
         }
     }
@@ -108,10 +118,18 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
     }
 
     private Notification buildNotification() {
+        Intent nextIntent = new Intent(this, AudioPlaybackService.class);
+        nextIntent.setAction("Next");
+        PendingIntent nextPendingIntent = PendingIntent.getService(this, 0, nextIntent, PendingIntent.FLAG_IMMUTABLE);
+        Intent previousIntent = new Intent(this, AudioPlaybackService.class);
+        previousIntent.setAction("Previous");
+        PendingIntent previousPendingIntent = PendingIntent.getService(this, 0, previousIntent, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        builder.addAction(0, "Next", nextPendingIntent);
+        builder.addAction(0, "Previous", previousPendingIntent);
         builder.setSmallIcon(R.drawable.ic_notification);
-        builder.setContentTitle("Music Playing");
+        builder.setContentTitle(songNameArray[mCurrentSong]);
         builder.setContentText("Click to Reopen App");
         builder.setOngoing(true);
 
@@ -147,29 +165,39 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
     }
 
     public void next() {
-        mPlayer.reset();
-        mState = STATE_IDLE;
-
-        if (mCurrentSong < 2) {
-            mCurrentSong += 1;
-        } else if (mCurrentSong == 2) {
-            mCurrentSong = 0;
+        if (!mLoop) {
+            if (mShuffle) {
+                mCurrentSong = (int) (Math.random() * 3);
+            } else if (mCurrentSong < 2) {
+                mCurrentSong += 1;
+            } else if (mCurrentSong == 2) {
+                mCurrentSong = 0;
+            }
         }
 
+        mPlayer.reset();
+        mState = STATE_IDLE;
         freshPlay();
+
+        Notification ongoing = buildNotification();
+        startForeground(NOTIFICATION_ID, ongoing);
     }
 
     public void previous() {
-        mPlayer.reset();
-        mState = STATE_IDLE;
-
-        if (mCurrentSong > 0) {
-            mCurrentSong -= 1;
-        } else if (mCurrentSong == 0) {
-            mCurrentSong = 2;
+        if (!mLoop && !mShuffle) {
+            if (mCurrentSong > 0) {
+                mCurrentSong -= 1;
+            } else if (mCurrentSong == 0) {
+                mCurrentSong = 2;
+            }
         }
 
+        mPlayer.reset();
+        mState = STATE_IDLE;
         freshPlay();
+
+        Notification ongoing = buildNotification();
+        startForeground(NOTIFICATION_ID, ongoing);
     }
 
     public void stop() {
@@ -200,11 +228,11 @@ public class AudioPlaybackService extends Service implements MediaPlayer.OnPrepa
         }
     }
     
-    public void loopSwitched() {
-        mLoop = !mLoop;
+    public void loopSwitched(boolean _switch) {
+        mLoop = _switch;
     }
 
-    public void shuffleSwitched() {
-        mShuffle = !mShuffle;
+    public void shuffleSwitched(boolean _switch) {
+        mShuffle = _switch;
     }
 }

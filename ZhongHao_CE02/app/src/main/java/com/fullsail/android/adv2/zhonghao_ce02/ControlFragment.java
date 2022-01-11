@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
-public class ControlFragment extends Fragment implements View.OnClickListener {
+public class ControlFragment extends Fragment implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     public static final String TAG = "ControlFragment.TAG";
 
@@ -24,6 +26,8 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
         void next();
         void previous();
         void stop();
+        void loop(boolean b);
+        void shuffle(boolean b);
     }
 
     private PlaybackCommandListener mListener;
@@ -56,6 +60,15 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        if (compoundButton.getId() == R.id.switch_loop) {
+            mListener.loop(b);
+        } else if (compoundButton.getId() == R.id.switch_shuffle) {
+            mListener.shuffle(b);
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,6 +87,12 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
             root.findViewById(R.id.button_pause).setOnClickListener(this);
             root.findViewById(R.id.button_previous).setOnClickListener(this);
             root.findViewById(R.id.button_next).setOnClickListener(this);
+
+            SwitchCompat switch1 = root.findViewById(R.id.switch_loop);
+            switch1.setOnCheckedChangeListener(this);
+
+            SwitchCompat switch2 = root.findViewById(R.id.switch_shuffle);
+            switch2.setOnCheckedChangeListener(this);
         }
     }
 }

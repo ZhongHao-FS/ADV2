@@ -94,4 +94,18 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
         Intent serviceIntent = new Intent(this, AudioPlaybackService.class);
         stopService(serviceIntent);
     }
+
+    @Override
+    public void loop(boolean b) {
+        if (mBound) {
+            mService.loopSwitched(b);
+        }
+    }
+
+    @Override
+    public void shuffle(boolean b) {
+        if (mBound) {
+            mService.shuffleSwitched(b);
+        }
+    }
 }
