@@ -3,6 +3,7 @@ package com.fullsail.android.adv2.zhonghao_ce01;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 
 import android.os.Environment;
+import android.provider.ContactsContract;
 
 import java.io.File;
 import java.io.IOException;

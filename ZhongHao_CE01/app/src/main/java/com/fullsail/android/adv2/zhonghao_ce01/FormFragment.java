@@ -11,6 +11,7 @@ import androidx.exifinterface.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,9 +37,11 @@ public class FormFragment extends Fragment {
     private static final String TAG_LATLNG = "LatLng_Key.TAG";
     private static final String TAG_TITLE = "Title.TAG";
     private static final String TAG_DESCRIPT = "Description.TAG";
+    private static final String KEY_RESULT = "FragmentResult.Key";
     EditText inputTitle;
     EditText inputDescription;
     ImageView markerImage;
+    public Uri mUri;
     private Bitmap mBitmap;
     private LatLng mLocation;
     private File mImageFileReference;
@@ -92,6 +95,20 @@ public class FormFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
+
+        if (getActivity() != null) {
+            getParentFragmentManager().setFragmentResultListener(KEY_RESULT, getActivity(), (requestKey, result) -> {
+                if (mUri != null) {
+                    markerImage.setImageURI(mUri);
+                    Log.i("Uri:", mUri.toString());
+
+                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+                    mBitmap = BitmapFactory.decodeFile(mImageFileReference.getAbsolutePath(),
+                            bitmapOptions);
+                }
+            });
+        }
+
     }
 
     @Override
@@ -105,6 +122,7 @@ public class FormFragment extends Fragment {
             }
             Uri imageURI = FileProvider.getUriForFile(getActivity(),
                     "com.fullsail.android.adv2.zhonghao_ce01", mImageFileReference);
+            mUri = imageURI;
 
             intent.putExtra(MediaStore.EXTRA_OUTPUT, imageURI);
             intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
@@ -126,21 +144,6 @@ public class FormFragment extends Fragment {
         }
 
         return true;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (getActivity() != null) {
-            Uri imageURI = FileProvider.getUriForFile(getActivity(),
-                    "com.fullsail.android.adv2.zhonghao_ce01", mImageFileReference);
-            markerImage.setImageURI(imageURI);
-
-            BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-            mBitmap = BitmapFactory.decodeFile(mImageFileReference.getAbsolutePath(),
-                    bitmapOptions);
-        }
     }
 
     private void saveImageMetadata(File imageFile, String title, String description) throws IOException {
