@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,7 +37,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 
 public class GoogleMapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.InfoWindowAdapter,
@@ -199,12 +199,13 @@ public class GoogleMapFragment extends SupportMapFragment implements OnMapReadyC
 
         File[] photos = FileUtility.getImageFiles();
         for (File photoFile: photos) {
+            Log.i("Marker:", photoFile.getName());
             LatLng location = new LatLng(0, 0);
             String title = "";
             String description = "";
 
             try {
-                ExifInterface exif = new ExifInterface(photoFile);
+                ExifInterface exif = new ExifInterface(photoFile.getAbsoluteFile());
                 String delete = exif.getAttribute(TAG_DELETE);
                 if (delete != null && delete.equals("Deleted")) {
                     continue;
