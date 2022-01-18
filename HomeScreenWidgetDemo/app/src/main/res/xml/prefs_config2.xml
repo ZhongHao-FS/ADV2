@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/image_preferences" >
+        <ListPreference
+            android:defaultValue="true"
+            android:entries="@array/imageNameArray"
+            android:entryValues="@array/listValues"
+            android:key="list_preference_1"
+            android:title="List preference" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

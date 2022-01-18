@@ -1,13 +1,11 @@
 package com.fullsail.android.homescreenwidgetdemo;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.widget.RemoteViews;
 import android.widget.Toast;
 
 public class SimpleWidgetProvider extends AppWidgetProvider {
@@ -31,6 +29,5 @@ public class SimpleWidgetProvider extends AppWidgetProvider {
             super.onReceive(context, intent);
         }
     }
-
 
 }

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CollectionWidgetDemo</string>
+    <string name="new_item">New</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="enter_data">Enter Data</string>
+    <string name="data_details">Data Details</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="age">Age</string>
+    <string name="no_data_available">No Data Available</string>
+</resources>
