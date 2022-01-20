@@ -26,7 +26,7 @@ public class DetailFragment extends Fragment {
     private static final String TAG_TITLE = "Title.TAG";
     private static final String TAG_DESCRIPT = "Description.TAG";
     private static final String TAG_IMAGE_PATH = "ImagePath.TAG";
-    private static final String TAG_DELETE = "Delete.TAG";
+    private static final String TAG_USER_COMMENT = "UserComment";
     private DeleteListener listener;
     private Uri mUri;
 
@@ -103,7 +103,7 @@ public class DetailFragment extends Fragment {
     private void crossMetadata(File imageFile) throws IOException {
         ExifInterface exif = new ExifInterface(imageFile);
 
-        exif.setAttribute(TAG_DELETE, "Deleted");
+        exif.setAttribute(TAG_USER_COMMENT, "Deleted");
         exif.saveAttributes();
     }
 }

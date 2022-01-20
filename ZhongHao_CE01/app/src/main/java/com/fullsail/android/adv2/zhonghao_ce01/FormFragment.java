@@ -11,7 +11,6 @@ import androidx.exifinterface.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,8 +34,8 @@ import java.io.OutputStream;
 public class FormFragment extends Fragment {
 
     private static final String TAG_LATLNG = "LatLng_Key.TAG";
-    private static final String TAG_TITLE = "Title.TAG";
-    private static final String TAG_DESCRIPT = "Description.TAG";
+    private static final String TAG_IMAGE_UNIQUE_ID = "ImageUniqueID";
+    private static final String TAG_IMAGE_DESCRIPTION = "ImageDescription";
     private static final String KEY_RESULT = "FragmentResult.Key";
     EditText inputTitle;
     EditText inputDescription;
@@ -100,7 +99,6 @@ public class FormFragment extends Fragment {
             getParentFragmentManager().setFragmentResultListener(KEY_RESULT, getActivity(), (requestKey, result) -> {
                 if (mUri != null) {
                     markerImage.setImageURI(mUri);
-                    Log.i("Uri:", mUri.toString());
 
                     BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
                     mBitmap = BitmapFactory.decodeFile(mImageFileReference.getAbsolutePath(),
@@ -139,7 +137,7 @@ public class FormFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            galleryAddPic();
+
             listener.onSaveForm();
         }
 
@@ -147,27 +145,17 @@ public class FormFragment extends Fragment {
     }
 
     private void saveImageMetadata(File imageFile, String title, String description) throws IOException {
-        ExifInterface exif = new ExifInterface(imageFile);
-
-        exif.setLatLong(mLocation.latitude, mLocation.longitude);
-        exif.setAttribute(TAG_TITLE, title);
-        exif.setAttribute(TAG_DESCRIPT, description);
-        exif.saveAttributes();
-
         OutputStream os = new FileOutputStream(imageFile);
         mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
         os.flush();
         os.close();
-    }
 
-    private void galleryAddPic() {
-        if (getActivity() != null) {
-            Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            File f = new File(mImageFileReference.getAbsolutePath());
-            Uri contentUri = Uri.fromFile(f);
-            mediaScanIntent.setData(contentUri);
-            getActivity().sendBroadcast(mediaScanIntent);
-        }
+        ExifInterface exif = new ExifInterface(imageFile);
+        exif.setLatLong(mLocation.latitude, mLocation.longitude);
+
+        exif.setAttribute(TAG_IMAGE_UNIQUE_ID, title);
+        exif.setAttribute(TAG_IMAGE_DESCRIPTION, description);
+        exif.saveAttributes();
     }
 
     private boolean validateInput() {

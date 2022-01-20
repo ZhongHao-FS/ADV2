@@ -6,14 +6,12 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,15 +35,17 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Objects;
 
 public class GoogleMapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.InfoWindowAdapter,
         GoogleMap.OnInfoWindowClickListener, GoogleMap.OnMapLongClickListener, LocationListener {
 
     public static final String TAG = "GoogleMapFragment.TAG";
-    private static final String TAG_TITLE = "Title.TAG";
-    private static final String TAG_DESCRIPT = "Description.TAG";
-    private static final String TAG_DELETE = "Delete.TAG";
+    private static final String TAG_IMAGE_UNIQUE_ID = "ImageUniqueID";
+    private static final String TAG_IMAGE_DESCRIPTION = "ImageDescription";
+    private static final String TAG_USER_COMMENT = "UserComment";
     private static final int REQUEST_LOCATION_PERMISSIONS = 0x01001;
     private GoogleMap mMap;
     private LatLng mCurrentLocation;
@@ -176,6 +176,7 @@ public class GoogleMapFragment extends SupportMapFragment implements OnMapReadyC
         mMap = googleMap;
         mMap.setInfoWindowAdapter(this);
         mMap.setOnInfoWindowClickListener(this);
+        mMap.setOnMapLongClickListener(this);
 
         zoomInCamera();
         loadMapMarkers();
@@ -199,20 +200,28 @@ public class GoogleMapFragment extends SupportMapFragment implements OnMapReadyC
 
         File[] photos = FileUtility.getImageFiles();
         for (File photoFile: photos) {
-            Log.i("Marker:", photoFile.getName());
             LatLng location = new LatLng(0, 0);
             String title = "";
             String description = "";
 
             try {
-                ExifInterface exif = new ExifInterface(photoFile.getAbsoluteFile());
-                String delete = exif.getAttribute(TAG_DELETE);
+                ExifInterface exif = new ExifInterface(photoFile);
+                String delete = exif.getAttribute(TAG_USER_COMMENT);
+
                 if (delete != null && delete.equals("Deleted")) {
+                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+                    Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(),
+                            bitmapOptions);
+                    OutputStream os = new FileOutputStream(photoFile);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+                    os.flush();
+                    os.close();
+
                     continue;
                 }
                 location = new LatLng(Objects.requireNonNull(exif.getLatLong())[0], exif.getLatLong()[1]);
-                title = exif.getAttribute(TAG_TITLE);
-                description = exif.getAttribute(TAG_DESCRIPT);
+                title = exif.getAttribute(TAG_IMAGE_UNIQUE_ID);
+                description = exif.getAttribute(TAG_IMAGE_DESCRIPTION);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -225,14 +234,8 @@ public class GoogleMapFragment extends SupportMapFragment implements OnMapReadyC
 
                 Marker marker = mMap.addMarker(options);
                 assert marker != null;
-                Uri photoUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-                String[] filePath = { MediaStore.Images.Media.DATA };
-                Cursor c = getContext().getContentResolver().query(photoUri,filePath, null, null, null);
-                c.moveToFirst();
-                int columnIndex = c.getColumnIndex(filePath[0]);
-                String imagePath = c.getString(columnIndex);
-                c.close();
-                marker.setTag(imagePath);
+
+                marker.setTag(photoFile);
             }
         }
     }

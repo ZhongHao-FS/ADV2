@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">ZhongHao_CE03</string>
+    <string-array name="entries_list_preference">
+        <item>10/31/2021</item>
+        <item>Oct 31, 2021</item>
+        <item>10.31.2021</item>
+    </string-array>
+    <string-array name="entryvalues_list_preference">
+        <item>MM/dd/yyyy</item>
+        <item>MMM dd, yyyy</item>
+        <item>MM.dd.yyyy</item>
+    </string-array>
 </resources>

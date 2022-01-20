@@ -1,5 +1,7 @@
 package com.fullsail.android.adv2.zhonghao_ce01;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -27,7 +29,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMapFragment
     public void onSendLocation(LatLng location) {
         Intent explicitForm = new Intent(this, FormActivity.class);
         explicitForm.putExtra(getString(R.string.putExtraLatLng_key), location);
-        startActivity(explicitForm);
+        mLauncher.launch(explicitForm);
     }
 
     @Override
@@ -38,6 +40,16 @@ public class MapsActivity extends AppCompatActivity implements GoogleMapFragment
         explicitDetail.putExtra(getString(R.string.putExtraDescript_key), marker.getSnippet());
         explicitDetail.putExtra(getString(R.string.putExtraFilePath_key), Objects.requireNonNull(marker.getTag()).toString());
 
-        startActivity(explicitDetail);
+        mLauncher.launch(explicitDetail);
     }
+
+    final ActivityResultLauncher<Intent> mLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    GoogleMapFragment frag = GoogleMapFragment.newInstance();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag, GoogleMapFragment.TAG).commit();
+                }
+            }
+    );
 }
