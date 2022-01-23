@@ -15,8 +15,11 @@ import androidx.preference.SwitchPreference;
 public class PreferenceFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
     private static final String PREFERENCE_LIST_KEY = "list_preference_1";
     private static final String PREFERENCE_SWITCH_KEY = "switch_preference_1";
+    public static final String TAG = "PreferenceFragment.TAG";
     public static String LOCATION = "Orlando";
     public static boolean DARK_THEME = false;
+
+    public static PreferenceFragment newInstance() { return new PreferenceFragment(); }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {

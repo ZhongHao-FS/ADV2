@@ -11,4 +11,5 @@
         <item>San Fransisco</item>
     </string-array>
     <string name="list_default">Orlando</string>
+    <string name="save">Save</string>
 </resources>
