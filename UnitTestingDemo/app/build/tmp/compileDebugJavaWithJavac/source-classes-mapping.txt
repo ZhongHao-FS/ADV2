@@ -1,0 +1,12 @@
+com/fullsail/android/unittestingdemo/data/Person.java
+ com.fullsail.android.unittestingdemo.data.Person
+com/fullsail/android/unittestingdemo/BuildConfig.java
+ com.fullsail.android.unittestingdemo.BuildConfig
+com/fullsail/android/unittestingdemo/util/StringsUtil.java
+ com.fullsail.android.unittestingdemo.util.StringsUtil
+com/fullsail/android/unittestingdemo/util/StorageUtil.java
+ com.fullsail.android.unittestingdemo.util.StorageUtil
+com/fullsail/android/unittestingdemo/fragment/PersonListFragment.java
+ com.fullsail.android.unittestingdemo.fragment.PersonListFragment
+com/fullsail/android/unittestingdemo/MainActivity.java
+ com.fullsail.android.unittestingdemo.MainActivity
