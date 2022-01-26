@@ -6,8 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+
+import java.util.concurrent.TimeUnit;
+
 public class WidgetUtil {
     static void updateWidget(Context context, AppWidgetManager appWidgetManager, int widgetId) {
+        updateWeather(context);
+
         RemoteViews widgetViews = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
 
         Intent settingsIntent = new Intent(context, SettingsActivity.class);
@@ -23,5 +34,16 @@ public class WidgetUtil {
         for (int appWidgetId: appWidgetIds) {
             updateWidget(context, appWidgetManager, appWidgetId);
         }
+    }
+
+    static void updateWeather(Context context) {
+        Constraints constraints = new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DownloadWorker.class).setConstraints(constraints).build();
+
+        WorkManager.getInstance(context).enqueue(workRequest);
+    }
+
+    static void updateUI() {
+
     }
 }

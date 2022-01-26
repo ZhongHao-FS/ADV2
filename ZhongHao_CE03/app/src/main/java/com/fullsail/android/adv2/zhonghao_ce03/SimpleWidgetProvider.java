@@ -11,6 +11,7 @@ import androidx.preference.PreferenceManager;
 
 public class SimpleWidgetProvider extends AppWidgetProvider {
     public static final String ACTION_UPDATE_THEME = "com.fullsail.android.ACTION_UPDATE_THEME";
+    public static final String ACTION_UPDATE_LOCATION = "com.fullsail.android.ACTION_UPDATE_LOCATION";
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -20,13 +21,21 @@ public class SimpleWidgetProvider extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        if (action != null && action.equals(ACTION_UPDATE_THEME)) {
+        if (action != null) {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            boolean darkTheme = prefs.getBoolean("switch_preference_1", false);
-            if (darkTheme) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+            if (action.equals(ACTION_UPDATE_THEME)) {
+                boolean darkTheme = prefs.getBoolean("switch_preference_1", false);
+                if (darkTheme) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+
+            if (action.equals(ACTION_UPDATE_LOCATION)) {
+                String location = prefs.getString("list_preference_1", "Orlando");
+                WidgetUtil.updateWeather(context);
             }
         }
 

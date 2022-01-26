@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 public class DownloadWorker extends Worker {
     private final Context mContext;
@@ -29,7 +30,7 @@ public class DownloadWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        String webAddress = URL_BASE;
+        String webAddress = URL_BASE + PreferenceFragment.LOCATION;
         String jsonData = "";
         HttpURLConnection connection = null;
         // Input stream reference
@@ -73,10 +74,18 @@ public class DownloadWorker extends Worker {
             JSONObject condition = current.getJSONObject("condition");
             String text = condition.getString("text");
             String icon = condition.getString("icon");
+
+            ArrayList<String> arrayList = new ArrayList<>();
+            arrayList.add(text);
+            arrayList.add(f + " F (" + c + " C)");
+            arrayList.add(localTime);
+            arrayList.add(icon);
+            FileUtility.writeArrayList(mContext, arrayList);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        WidgetUtil.updateUI();
         return Result.success();
     }
 }

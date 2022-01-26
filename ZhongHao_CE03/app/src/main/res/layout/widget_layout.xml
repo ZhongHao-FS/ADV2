@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.25"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        android:contentDescription="@string/buttonDescription"
+        app:srcCompat="@drawable/ic_launcher_background"
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/textView"
@@ -21,10 +23,11 @@
         android:text="TextView" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButton_2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.25"
+        android:contentDescription="@string/buttonDescription"
         app:srcCompat="@drawable/ic_baseline_settings_64"
         tools:ignore="SpeakableTextPresentCheck" />
 </LinearLayout>

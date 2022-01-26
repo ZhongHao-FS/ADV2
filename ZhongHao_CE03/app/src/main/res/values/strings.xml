@@ -12,4 +12,5 @@
     </string-array>
     <string name="list_default">Orlando</string>
     <string name="save">Save</string>
+    <string name="buttonDescription">ImageButton</string>
 </resources>
