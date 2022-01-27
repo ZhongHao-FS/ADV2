@@ -1,0 +1,102 @@
+[
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/layout_widget_layout.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/layout/widget_layout.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/xml_provider_info.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/xml/provider_info.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/xml_prefs_config2.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/xml/prefs_config2.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/xml_provider2_info.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/xml/provider2_info.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/menu_config_menu.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/menu/config_menu.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/drawable_image1.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/drawable/image1.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/layout_widget2_layout.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/layout/widget2_layout.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/drawable_image3.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/drawable/image3.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/xml_prefs_config.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/xml/prefs_config.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/drawable_image2.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/drawable/image2.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/layout_config_layout.xml.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/layout/config_layout.xml"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/hao/Desktop/FullSail/ADV2/HomeScreenWidgetDemo/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    }
+]

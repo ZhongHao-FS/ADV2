@@ -41,10 +41,7 @@ public class FileUtility {
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            oos.writeChars(_weatherInfo.get(0) + "|");
-            oos.writeChars(_weatherInfo.get(1) + "|");
-            oos.writeChars(_weatherInfo.get(2) + "|");
-            oos.writeChars(_weatherInfo.get(3));
+            oos.writeObject(_weatherInfo);
             oos.close();
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,0 +1,16 @@
+com/fullsail/android/homescreenwidgetdemo/ConfigFragment2.java
+ com.fullsail.android.homescreenwidgetdemo.ConfigFragment2
+com/fullsail/android/homescreenwidgetdemo/WidgetUtil.java
+ com.fullsail.android.homescreenwidgetdemo.WidgetUtil
+com/fullsail/android/homescreenwidgetdemo/SecondWidgetProvider.java
+ com.fullsail.android.homescreenwidgetdemo.SecondWidgetProvider
+com/fullsail/android/homescreenwidgetdemo/ConfigFragment.java
+ com.fullsail.android.homescreenwidgetdemo.ConfigFragment
+com/fullsail/android/homescreenwidgetdemo/BuildConfig.java
+ com.fullsail.android.homescreenwidgetdemo.BuildConfig
+com/fullsail/android/homescreenwidgetdemo/SimpleWidgetProvider.java
+ com.fullsail.android.homescreenwidgetdemo.SimpleWidgetProvider
+com/fullsail/android/homescreenwidgetdemo/ConfigActivity.java
+ com.fullsail.android.homescreenwidgetdemo.ConfigActivity
+com/fullsail/android/homescreenwidgetdemo/ConfigActivity2.java
+ com.fullsail.android.homescreenwidgetdemo.ConfigActivity2

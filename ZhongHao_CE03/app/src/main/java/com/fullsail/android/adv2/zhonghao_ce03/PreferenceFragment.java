@@ -50,11 +50,11 @@ public class PreferenceFragment extends PreferenceFragmentCompat implements Pref
             edit.putString(PREFERENCE_LIST_KEY, newValue.toString());
             LOCATION = newValue.toString();
         } else if (preference.getKey().equals(PREFERENCE_SWITCH_KEY)) {
-            edit.putString(PREFERENCE_SWITCH_KEY, newValue.toString());
+            edit.putBoolean(PREFERENCE_SWITCH_KEY, newValue.equals(true));
             DARK_THEME = newValue.equals(true);
         }
         edit.apply();
 
-        return false;
+        return true;
     }
 }
