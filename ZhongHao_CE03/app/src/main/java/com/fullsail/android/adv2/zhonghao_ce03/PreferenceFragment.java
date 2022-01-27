@@ -49,7 +49,8 @@ public class PreferenceFragment extends PreferenceFragmentCompat implements Pref
         if (preference.getKey().equals(PREFERENCE_LIST_KEY)) {
             edit.putString(PREFERENCE_LIST_KEY, newValue.toString());
             LOCATION = newValue.toString();
-        } else if (preference.getKey().equals(PREFERENCE_SWITCH_KEY)) {
+        }
+        if (preference.getKey().equals(PREFERENCE_SWITCH_KEY)) {
             edit.putBoolean(PREFERENCE_SWITCH_KEY, newValue.equals(true));
             DARK_THEME = newValue.equals(true);
         }

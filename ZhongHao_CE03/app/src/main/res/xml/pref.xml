@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ListPreference
-        android:defaultValue="@string/list_default"
-        android:entries="@array/entries_list_preference"
-        android:entryValues="@array/entryvalues_list_preference"
-        android:key="list_preference_1"
-        android:title="Location" />
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="switch_preference_1"
-        android:title="Dark Theme" />
+    <PreferenceCategory android:title="Location Preference">
+        <ListPreference
+            android:defaultValue="@string/list_default"
+            android:entries="@array/entries_list_preference"
+            android:entryValues="@array/entryvalues_list_preference"
+            android:key="list_preference_1"
+            android:title="Location" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Theme Preference">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_preference_1"
+            android:title="Dark Theme" />
+    </PreferenceCategory>
 </PreferenceScreen>

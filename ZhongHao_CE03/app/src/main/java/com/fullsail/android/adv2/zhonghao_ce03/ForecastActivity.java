@@ -33,14 +33,6 @@ public class ForecastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
 
-        Intent starter = getIntent();
-        int widgetId = starter.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
-
-        if (widgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
-            finish();
-            return;
-        }
-
         mImageView_1 = findViewById(R.id.imageView);
         mImageView_2 = findViewById(R.id.imageView2);
         mImageView_3 = findViewById(R.id.imageView3);
