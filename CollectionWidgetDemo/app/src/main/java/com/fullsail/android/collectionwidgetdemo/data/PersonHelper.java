@@ -18,6 +18,8 @@ public class PersonHelper {
         ArrayList<Person> people = loadPeople(_context);
         people.add(_person);
         savePeople(_context, people);
+
+        CollectionWidgetHelper.notifyDataChanged(_context);
     }
 
     private static void savePeople(Context _context, ArrayList<Person> _people) {
@@ -55,5 +57,7 @@ public class PersonHelper {
         ArrayList<Person> people = loadPeople(_context);
         while(people.remove(_person));
         savePeople(_context, people);
+
+        CollectionWidgetHelper.notifyDataChanged(_context);
     }
 }

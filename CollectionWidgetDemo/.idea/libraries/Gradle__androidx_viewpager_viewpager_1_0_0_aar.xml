@@ -5,8 +5,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7542d9db98e12fc835d916da1272a609/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c76ee24e8b22a0da30d2e48205e9869f/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/70815d79092ecd9fc6461dffc8a2c5cb/transformed/viewpager-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/70815d79092ecd9fc6461dffc8a2c5cb/transformed/viewpager-1.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/70815d79092ecd9fc6461dffc8a2c5cb/transformed/viewpager-1.0.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d60bf579b964a722f8cb44f81fad0ee0/transformed/viewpager-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d60bf579b964a722f8cb44f81fad0ee0/transformed/viewpager-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d60bf579b964a722f8cb44f81fad0ee0/transformed/viewpager-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
