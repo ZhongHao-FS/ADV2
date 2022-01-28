@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import android.widget.TextView;
+
 import com.fullsail.android.unittestingdemo.util.StringsUtil;
 
 /**

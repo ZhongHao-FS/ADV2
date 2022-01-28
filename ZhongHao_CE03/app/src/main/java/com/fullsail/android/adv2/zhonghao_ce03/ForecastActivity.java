@@ -1,7 +1,6 @@
 package com.fullsail.android.adv2.zhonghao_ce03;
 
-import android.appwidget.AppWidgetManager;
-import android.content.Intent;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -20,7 +19,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class ForecastActivity extends AppCompatActivity {
-    private final String URL_BASE = "http://api.weatherapi.com/v1/forecast.json?key=2fed76e6ac4f4c07acf35245221801&days=3&q=";
     private ImageView mImageView_1;
     private ImageView mImageView_2;
     private ImageView mImageView_3;
@@ -40,10 +38,13 @@ public class ForecastActivity extends AppCompatActivity {
         mTextView_2 = findViewById(R.id.textView3);
         mTextView_3 = findViewById(R.id.textView4);
 
-        downloadForecast();
+        if (NetworkUtility.isConnected(this)) {
+            downloadForecast();
+        }
     }
 
     private void downloadForecast() {
+        String URL_BASE = "http://api.weatherapi.com/v1/forecast.json?key=2fed76e6ac4f4c07acf35245221801&days=3&q=";
         String webAddress = URL_BASE + PreferenceFragment.LOCATION;
         String jsonData = "";
         HttpURLConnection connection;

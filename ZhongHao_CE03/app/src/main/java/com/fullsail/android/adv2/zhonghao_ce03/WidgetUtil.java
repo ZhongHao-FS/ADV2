@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 
 public class WidgetUtil {
-    public static boolean mForecast = false;
-
     static void updateWidget(Context context, AppWidgetManager appWidgetManager, int widgetId) {
         RemoteViews widgetViews = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
 

@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class DownloadWorker extends Worker {
     private final Context mContext;
-    private final String URL_BASE = "http://api.weatherapi.com/v1/current.json?key=2fed76e6ac4f4c07acf35245221801&q=";
 
     public DownloadWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -28,6 +27,7 @@ public class DownloadWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
+        String URL_BASE = "http://api.weatherapi.com/v1/current.json?key=2fed76e6ac4f4c07acf35245221801&q=";
         String webAddress = URL_BASE + PreferenceFragment.LOCATION;
         String jsonData = "";
         HttpURLConnection connection;
