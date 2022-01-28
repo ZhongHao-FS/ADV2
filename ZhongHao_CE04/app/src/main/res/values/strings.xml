@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ZhongHao_CE04</string>
+    <string name="imageViewDescription">image</string>
 </resources>
