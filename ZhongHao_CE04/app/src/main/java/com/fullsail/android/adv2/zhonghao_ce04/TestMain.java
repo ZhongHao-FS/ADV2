@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class TestMain extends AppCompatActivity {
     private final ArrayList<Uri> mImageUriPaths = new ArrayList<>();
-    Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+    Uri uri = MediaStore.Images.Media.INTERNAL_CONTENT_URI;
     String[] projection = { MediaStore.Images.Media._ID };
 
     @Override

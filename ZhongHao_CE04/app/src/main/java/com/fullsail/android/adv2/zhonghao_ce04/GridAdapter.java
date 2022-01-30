@@ -2,7 +2,6 @@ package com.fullsail.android.adv2.zhonghao_ce04;
 
 import android.content.Context;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,6 @@ public class GridAdapter extends BaseAdapter {
 
         if (imageUri != null) {
             vh.iv.setImageURI(imageUri);
-            Log.i("image", "setUri");
         }
         return view;
     }
