@@ -14,22 +14,22 @@ import java.util.ArrayList;
 public class GridAdapter extends BaseAdapter {
     private static final long BASE_ID = 0x1003;
     private final Context mContext;
-    private final ArrayList<String> mImagePaths;
+    private final ArrayList<Uri> mImageUriPaths;
 
-    public GridAdapter(Context context, ArrayList<String> imagePaths) {
+    public GridAdapter(Context context, ArrayList<Uri> imageUriPaths) {
         mContext = context;
-        mImagePaths = imagePaths;
+        mImageUriPaths = imageUriPaths;
     }
 
     @Override
     public int getCount() {
-        return mImagePaths.size();
+        return mImageUriPaths.size();
     }
 
     @Override
     public Object getItem(int i) {
-        if (i >= 0 && i < mImagePaths.size()) {
-            return mImagePaths.get(i);
+        if (i >= 0 && i < mImageUriPaths.size()) {
+            return mImageUriPaths.get(i);
         }
         return null;
     }
@@ -42,7 +42,7 @@ public class GridAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder vh;
-        String imagePath = (String) getItem(i);
+        Uri imageUri = (Uri) getItem(i);
 
         if (view == null) {
             view = LayoutInflater.from(mContext).inflate(R.layout.grid_cell, viewGroup, false);
@@ -51,10 +51,8 @@ public class GridAdapter extends BaseAdapter {
         } else {
             vh = (ViewHolder) view.getTag();
         }
-        vh.iv.setImageResource(R.drawable.ic_launcher_background);
-        Log.i("getView", "setResource");
-        if (imagePath != null) {
-            Uri imageUri = Uri.parse(imagePath);
+
+        if (imageUri != null) {
             vh.iv.setImageURI(imageUri);
             Log.i("image", "setUri");
         }
