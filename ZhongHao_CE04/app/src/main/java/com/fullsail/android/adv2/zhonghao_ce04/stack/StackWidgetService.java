@@ -1,4 +1,4 @@
-package com.fullsail.android.adv2.zhonghao_ce04.widget;
+package com.fullsail.android.adv2.zhonghao_ce04.stack;
 
 import android.content.Intent;
 import android.widget.RemoteViewsService;

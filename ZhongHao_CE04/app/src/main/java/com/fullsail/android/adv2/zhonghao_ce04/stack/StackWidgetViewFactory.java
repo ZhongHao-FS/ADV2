@@ -1,4 +1,4 @@
-package com.fullsail.android.adv2.zhonghao_ce04.widget;
+package com.fullsail.android.adv2.zhonghao_ce04.stack;
 
 import android.content.Context;
 import android.content.Intent;
@@ -43,14 +43,14 @@ public class StackWidgetViewFactory implements RemoteViewsService.RemoteViewsFac
 
     @Override
     public RemoteViews getViewAt(int i) {
-        RemoteViews stackWV = new RemoteViews(mContext.getPackageName(), R.layout.widget_stack_item);
+        RemoteViews stackWV = new RemoteViews(mContext.getPackageName(), R.layout.widget_item);
         Uri uri = mUriList.get(i);
         stackWV.setImageViewUri(R.id.imageView2, uri);
 
         // Set intent for item click
         Intent fillInIntent = new Intent(Intent.ACTION_VIEW);
         fillInIntent.setData(uri);
-        stackWV.setOnClickFillInIntent(R.id.stackWidgetItem, fillInIntent);
+        stackWV.setOnClickFillInIntent(R.id.widgetItem, fillInIntent);
 
         return stackWV;
     }

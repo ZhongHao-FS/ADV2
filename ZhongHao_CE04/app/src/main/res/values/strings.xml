@@ -2,4 +2,5 @@
     <string name="app_name">ZhongHao_CE04</string>
     <string name="imageViewDescription">image</string>
     <string name="stack_widget_image">Stack Widget Image</string>
+    <string name="buttonText">Refresh</string>
 </resources>
