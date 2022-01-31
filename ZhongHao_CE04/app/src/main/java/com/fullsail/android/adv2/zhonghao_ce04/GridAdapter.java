@@ -58,7 +58,7 @@ public class GridAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        ImageView iv;
+        final ImageView iv;
 
         public ViewHolder(View _layout) {
             iv = _layout.findViewById(R.id.imageView);

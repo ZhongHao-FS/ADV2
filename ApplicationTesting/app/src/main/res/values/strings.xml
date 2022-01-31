@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ApplicationTestingDemo</string>
+    <string name="launched">Launched</string>
+    <string name="perform_action">Perform Action</string>
+</resources>

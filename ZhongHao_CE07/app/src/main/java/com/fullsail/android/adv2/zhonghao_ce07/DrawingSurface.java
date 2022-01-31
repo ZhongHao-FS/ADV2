@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -15,15 +16,21 @@ import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class DrawingSurface extends SurfaceView implements SurfaceHolder.Callback {
-
+    public static int width;
+    public static int height;
     private Rect mDimensions;
     private Paint mBlankPaint;
+    private Paint mTextPaint;
+    private Paint mItemPaint;
     private Bitmap mBackground;
     private Bitmap mHole;
-    private ArrayList<Rect> mPoints;
+    private ArrayList<Rect> mDigs;
+    private ArrayList<Point> mPoints;
+    private ArrayList<Item> mItemList = new ArrayList<>();
 
     public DrawingSurface(Context context) {
         super(context);
@@ -64,7 +71,20 @@ public class DrawingSurface extends SurfaceView implements SurfaceHolder.Callbac
         mHole = BitmapFactory.decodeResource(res, R.drawable.hole);
 
         mBlankPaint = new Paint();
+
+        mTextPaint = new Paint();
+        mTextPaint.setColor(Color.BLUE);
+        mTextPaint.setTextSize(60.0f);
+
+        mDigs = new ArrayList<>();
+
+        mItemPaint = new Paint();
+        mItemPaint.setColor(Color.YELLOW);
         mPoints = new ArrayList<>();
+
+        InputStream inputStream = getResources().openRawResource(R.raw.items);
+        CsvUtil csvFile = new CsvUtil(inputStream);
+        mItemList = csvFile.read();
     }
 
     @Override
@@ -74,8 +94,13 @@ public class DrawingSurface extends SurfaceView implements SurfaceHolder.Callbac
         canvas.drawColor(Color.BLACK);
         canvas.drawBitmap(mBackground, null, mDimensions, mBlankPaint);
 
-        for (Rect r: mPoints) {
+        canvas.drawText("Items left: ", mDimensions.width()/2.0f, mDimensions.height()/2.0f, mTextPaint);
+
+        for (Rect r: mDigs) {
             canvas.drawBitmap(mHole, null, r, mBlankPaint);
+        }
+        for (Point p: mPoints) {
+            canvas.drawCircle(p.x, p.y, 5.0f, mItemPaint);
         }
     }
 
@@ -84,7 +109,13 @@ public class DrawingSurface extends SurfaceView implements SurfaceHolder.Callbac
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             Rect coordinate = new Rect((int) event.getX() - 35, (int) event.getY() - 35,
                     (int) event.getX() + 35, (int) event.getY() + 35);
-            mPoints.add(coordinate);
+            mDigs.add(coordinate);
+
+            for (Item treasure : mItemList) {
+                if (coordinate.contains(treasure.getX(), treasure.getY())) {
+                    mPoints.add(new Point(treasure.getX(), treasure.getY()));
+                }
+            }
             postInvalidate();
         }
 
@@ -96,6 +127,8 @@ public class DrawingSurface extends SurfaceView implements SurfaceHolder.Callbac
         Canvas canvas = _holder.lockCanvas();
         // Retrieve the dimensions and hold onto them for later.
         mDimensions = new Rect(0, 0, canvas.getWidth(), canvas.getHeight());
+        width = canvas.getWidth();
+        height = canvas.getHeight();
         // Release the canvas and post a draw.
         _holder.unlockCanvasAndPost(canvas);
     }

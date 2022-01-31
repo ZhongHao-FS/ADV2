@@ -8,23 +8,16 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.ClipData;
-import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.GridView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private final ArrayList<Uri> mImageUriPaths = new ArrayList<>();
-    Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-    String[] projection = { MediaStore.Images.Media.DATA };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,59 +37,43 @@ public class MainActivity extends AppCompatActivity {
                     loadGalleryImages();
                 } else {
                     Log.i("Permission", "was denied!");
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    startActivityForResult(Intent.createChooser(intent, "Select Images"), 1);
                 }
             });
 
     private void loadGalleryImages() {
-        Cursor cursor = getContentResolver()
-                .query(uri, projection, null, null, null);
-        int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                // long id = cursor.getLong(idColumn);
-                // Uri imageUri = ContentUris.withAppendedId(uri, id);
-                String imageString = cursor.getString(idColumn);
-                Uri imageUri = Uri.parse(imageString);
-                mImageUriPaths.add(imageUri);
-            }
-
-            if (mImageUriPaths != null) {
-                showGridView();
-            }
-        } else {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-            startActivityForResult(Intent.createChooser(intent, "Select Images"), 1);
-        }
+        ArrayList<Uri> imageUriList = ImageDataUtil.loadGallery(this);
+        showGridView(imageUriList);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        ArrayList<Uri> imageUriList = new ArrayList<>();
+
         if (data != null) {
             if (data.getClipData() != null) {
                 ClipData clipData = data.getClipData();
                 int count = clipData.getItemCount();
                 for (int i = 0; i < count; i++) {
                     Uri imageUri = clipData.getItemAt(i).getUri();
-                    mImageUriPaths.add(imageUri);
+                    imageUriList.add(imageUri);
                 }
             } else {
                 Uri singleUri = data.getData();
-                mImageUriPaths.add(singleUri);
+                imageUriList.add(singleUri);
             }
         }
 
-        if (mImageUriPaths != null) {
-            showGridView();
-        }
+        showGridView(imageUriList);
     }
 
-    private void showGridView() {
+    private void showGridView(ArrayList<Uri> uriList) {
         GridView imageGrid = findViewById(R.id.gridView);
-        GridAdapter adapter = new GridAdapter(this, mImageUriPaths);
+        GridAdapter adapter = new GridAdapter(this, uriList);
         imageGrid.setAdapter(adapter);
     }
 }
