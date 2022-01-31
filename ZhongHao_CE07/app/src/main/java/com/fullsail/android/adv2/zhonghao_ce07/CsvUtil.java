@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class CsvUtil {
-    InputStream inputStream;
+    final InputStream inputStream;
 
     public CsvUtil(InputStream inputStream){
         this.inputStream = inputStream;
@@ -21,19 +21,17 @@ public class CsvUtil {
             String csvLine;
             while ((csvLine = reader.readLine()) != null) {
                 String[] row = csvLine.split(",");
-                Item item = new Item(row[0], Integer.parseInt(row[1]));
+                Item item = new Item(Integer.parseInt(row[1]));
                 itemList.add(item);
             }
         } catch (IOException ex) {
             throw new RuntimeException("Error in reading CSV file: "+ex);
         }
-        finally {
-            try {
-                inputStream.close();
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Error while closing input stream: "+e);
-            }
+
+        try {
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return itemList;

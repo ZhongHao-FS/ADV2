@@ -3,22 +3,16 @@ package com.fullsail.android.adv2.zhonghao_ce07;
 import java.util.Random;
 
 public class Item {
-    private String mName;
-    private int mValue;
-    private int mX;
-    private int mY;
+    private final int mValue;
+    private final int mX;
+    private final int mY;
 
-    public Item(String _name, int _value) {
-        mName = _name;
+    public Item(int _value) {
         mValue = _value;
 
         Random rand = new Random();
         mX = rand.nextInt(DrawingSurface.width);
         mY = rand.nextInt(DrawingSurface.height);
-    }
-
-    public String getName() {
-        return mName;
     }
 
     public int getValue() {
